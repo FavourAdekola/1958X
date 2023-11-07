@@ -67,6 +67,8 @@ void initialize(void);
 void disabled(void);
 void competition_initialize(void);
 void opcontrol(void);
+void controllerScreen(void);
+void driveStraight(double distance, bool direction);
 #ifdef __cplusplus
 }
 #endif

@@ -26,9 +26,19 @@ void setCataMotor()
         power = -127;
     }
 
+    rapid_fire();
     catapult.move(power);
 }
-void auton_shoot()
+void rapid_fire()
 {
+    bool set = false;
+    if (con.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
+    {
+        if (!set)
+        {
+            catapult.move_velocity(-127);
+            pros::delay(45);
+        }
+    }
     
 }

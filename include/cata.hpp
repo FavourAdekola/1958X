@@ -1,4 +1,4 @@
 #include "main.h"
 
 void setCataMotor();
-void auton_shoot();
+void rapid_fire();
