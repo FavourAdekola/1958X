@@ -20,3 +20,5 @@ pros::ADIMotor limit_switch('B');
 
 // CONTROLLER
 pros::Controller con (pros::E_CONTROLLER_MASTER);
+
+pros::IMU gyro(16);

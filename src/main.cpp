@@ -27,7 +27,22 @@ void initialize() {
 	pros::lcd::set_text(1, "Produced by Kash Krabs");
 	pros::lcd::set_text(2, "Lucas is Still Gay");
 
-	pros::lcd::register_btn1_cb(on_center_button);
+	FR_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	BR_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	TR_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	FL_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	BL_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	TL_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+	gyro.reset();
+	con.clear();
+	pros::Task controller(controllerScreen, "print");
+	pros::delay(2000);
+}
+
+void controllerScreen()
+{
+	con.print(0,0,"Hi Lucas");
+	pros::delay(50);
 }
 
 /**

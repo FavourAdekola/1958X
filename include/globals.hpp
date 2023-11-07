@@ -4,6 +4,7 @@
 
 extern pros::Motor FR_Drive;
 extern pros::Motor BR_Drive;
+
 // THIRD MOTOR
 extern pros::Motor TR_Drive;
 
@@ -23,3 +24,6 @@ extern pros::ADIMotor limit_switch;
 
 // CONTROLLER
 extern pros::Controller con;
+
+//AUTONOMOUS
+extern pros::IMU gyro;
