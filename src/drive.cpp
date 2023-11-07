@@ -141,3 +141,23 @@ void push_intake()
         pushy_one.set_value(0);
     }
 }
+
+void set_wings()
+{
+  bool active = false;
+
+  if (con.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT))
+  {
+    active = !active;
+  }
+
+  if (active)
+  {
+    wings.set_value(127);
+  }
+  else
+  {
+    wings.set_value(0);
+  }
+  
+}

@@ -41,7 +41,7 @@ void initialize() {
 
 void controllerScreen()
 {
-	con.print(0,0,"Hi Lucas");
+	con.print(0,0, "%f", gyro.get_heading());
 	pros::delay(50);
 }
 
@@ -76,7 +76,7 @@ void competition_initialize() {}
  */
 void autonomous()
 {
-	
+	driveStraight(100,true);
 }
 
 void driveStraight(double distance, bool direction)
@@ -192,6 +192,7 @@ void opcontrol() {
 		setIntakeMotors();
 		push_intake();
 		setCataMotor();
+		set_wings();
 
 		pros::delay(10);
 	}

@@ -10,3 +10,5 @@ void setIntake(int power);
 void setIntakeMotors();
 
 void push_intake();
+
+void set_wings();

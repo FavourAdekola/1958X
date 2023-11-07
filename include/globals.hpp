@@ -27,3 +27,4 @@ extern pros::Controller con;
 
 //AUTONOMOUS
 extern pros::IMU gyro;
+extern pros::ADIMotor wings;
