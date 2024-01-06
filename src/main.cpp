@@ -120,7 +120,7 @@ void autonomous()
 	// pros::delay(50);
 
 	//Red Offense
-	driveStraight(51, false);
+/* 	driveStraight(51, false);
 	pros::delay(100);
 	rotateToAngle(90,false);
 	pros::delay(100);
@@ -129,7 +129,7 @@ void autonomous()
 	intake.move_velocity(0);
 	setDriveMotors(20,20);
 	pros::delay(4000);
-	stop();
+	stop(); */
 
 	//Red Defense
 	// driveStraight(51, false);
