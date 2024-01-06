@@ -10,9 +10,8 @@ void on_center_button() {
 	static bool pressed = false;
 	pressed = !pressed;
 	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
+		autonomous();
 	} else {
-		pros::lcd::clear_line(2);
 	}
 }
 
@@ -24,8 +23,6 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Produced by Kash Krabs");
-	pros::lcd::set_text(2, "Lucas is Still Gay");
 
 	FR_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 	BR_Drive.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
@@ -36,7 +33,8 @@ void initialize() {
 	gyro.reset();
 	con.clear();
 	pros::Task controller(controllerScreen, "print");
-	pros::delay(2000);
+	pros::delay(200);
+	
 }
 
 void controllerScreen()
@@ -63,6 +61,9 @@ void disabled() {}
  */
 void competition_initialize() {}
 
+void auton(){
+
+}
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -76,13 +77,128 @@ void competition_initialize() {}
  */
 void autonomous()
 {
-	driveStraight(100,true);
+	// //SKILLS AUTON
+	
+	// // // //Match Load
+	// catapult.move_velocity(127);
+	// pros::delay(30500);
+	// catapult.move_velocity(0);
+
+	// // //Cross To Other Side
+	// pushy_one.set_value(127);
+	// rotateToAngle(45, false);
+	// pros::delay(100);
+	// driveStraight(98, false);
+	// pros::delay(100);
+
+	// // // PUSH on Red Goal One
+	// wings.set_value(127);
+	// rotateToAngle(20, false);
+	// pros::delay(100);
+	// driveStraight(72, false);
+	// pros::delay(100);
+	// driveStraight(12, true);
+	// pros::delay(100);
+	// driveStraight(13, false);
+	// wings.set_value(0);
+	// pros::delay(100);
+
+	// driveStraight(24, true);
+	// pros::delay(100);
+	// rotateToAngle(340, false);
+	// pros::delay(100);
+	// driveStraight(90, false);
+	// pros::delay(100);
+	// rotateToAngle(85, false);
+	// wings.set_value(127);
+	// pros::delay(100);
+	// driveStraight(50, false);
+	// pros::delay(100);
+	// driveStraight(12, true);
+	// pros::delay(50);
+	// driveStraight(13, false);
+	// pros::delay(50);
+
+	//Red Offense
+	driveStraight(51, false);
+	pros::delay(100);
+	rotateToAngle(90,false);
+	pros::delay(100);
+	intake.move_velocity(600);
+	pros::delay(500);
+	intake.move_velocity(0);
+	setDriveMotors(20,20);
+	pros::delay(4000);
+	stop();
+
+	//Red Defense
+	// driveStraight(51, false);
+	// pros::delay(100);
+	// rotateToAngle(240,false);
+	// pros::delay(100);
+	// intake.move_velocity(600);
+	// pros::delay(1000);
+	// intake.move_velocity(0);
+	// setDriveMotors(20,20);
+	// pros::delay(4000);
+	// stop();
+	
+
+	//SKILLS
+	// setDriveMotors(40,40);
+	// pros::delay(2000);
+	// setDriveMotors(80,-80);
+	// pros::delay(1000);
+	// stop();
+	// while(true)
+	// {
+	// 	catapult.move(200);
+	// }
+	
+	
+
+
+
+	
+
+//walk forward x 
+//turn 45 degrees clockwise (Abs = -45)
+//activate wings
+//deactive wings
+//back up into matchload zone
+//MATCHLOAD -> 15 times therefore assuming 2 sec each launch -> 30sec
+
+//rotate 45 degrees clockwise (abs = -90)
+//line up infront of underpass
+//move foward x
+
+//rotate 20 degrees counterclockwise (line up towards right of goal) (abs = -70)
+// activate wings
+//move foward x1 amount 
+//move backward x1+5in amount
+
+// rotate 70 degrees counterclockwise (abs = 0)
+//move foward x amount (to match front of goal)
+
+//rotate 90 degrees clockwise (abs = -90)
+//move forward x1 amount
+//move backward x1+5in amount
+
+//rotate 90 degrees counterclockwise (abs = 0)
+//move forward x amount (match left of goal)
+
+//rotate 110 degrees clockwise (abs = -110)
+//move forward x1 amount
+
+//END
+
+
 }
 
 void driveStraight(double distance, bool direction)
 {
 	// Convert distance to encoder ticks
-	int targetTicks = (int)((distance / (3.25 * 3.14159)) * 360);
+	int targetTicks = (int)((distance / (4 * 3.14159)) * 360);
 
 	// Reset encoders
 	FR_Drive.tare_position();
@@ -186,13 +302,11 @@ void driveStraight(double distance, bool direction)
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
+	
 	while (true) {
 		setDrive();
 		setIntakeMotors();
-		push_intake();
 		setCataMotor();
-		set_wings();
 
 		pros::delay(10);
 	}

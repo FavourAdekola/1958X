@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "1958X ",
+    "project_name": "MOVE RIGHT AUTON",
     "target": "v5",
     "templates": {
       "kernel": {
@@ -310,7 +310,8 @@
     },
     "upload_options": {
       "description": "They Didn't Believe in Us - God Did",
-      "icon": "X"
+      "icon": "X",
+      "slot": 1
     }
   }
 }

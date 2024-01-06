@@ -1,14 +1,17 @@
 #include "main.h"
 
+float ratio = 600.0/127.0;
+bool active = false;
+
 void setDriveMotors(int R, int L)
 {
-    FL_Drive.move(L);
-    BL_Drive.move(L);
-    TL_Drive.move(L);
+    FL_Drive.move_velocity(L);
+    BL_Drive.move_velocity(L);
+    TL_Drive.move_velocity(L);
 
-    FR_Drive.move(R);
-    BR_Drive.move(R);
-    TR_Drive.move(R);
+    FR_Drive.move_velocity(R);
+    BR_Drive.move_velocity(R);
+    TR_Drive.move_velocity(R);
 
 }
 
@@ -18,7 +21,7 @@ void setDrive()
     int R_Power = con.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
     int L_Power = con.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 
-    setDriveMotors(R_Power, L_Power);
+    setDriveMotors(R_Power * ratio, L_Power * ratio);
 }
 
 void rotateToAngle(float target_angle, bool direction)
@@ -108,24 +111,23 @@ void setIntake(int power)
     intake.move_velocity(power);
 }
 
-
 void setIntakeMotors()
 {
-    int power = 0;
+
     if(con.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
     {
-        power = 600;
+        intake.move_velocity(600);
     }
     if (con.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
     {
-        power = -600;
+        intake.move_velocity(-600);
     }
-    if (con.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) || (con.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)))
+    if (con.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT))
     {
-        power = 0;
+        intake.move_velocity(0);
     }
 
-    setIntake(power);
+    //setIntake(power);
 }
 
 void push_intake()
@@ -144,11 +146,11 @@ void push_intake()
 
 void set_wings()
 {
-  bool active = false;
-
+  pros::delay(200);
   if (con.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT))
   {
     active = !active;
+    pros::delay(100);
   }
 
   if (active)

@@ -13,7 +13,7 @@ void setCataMotor()
 
     if(con.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && ready)
     {
-        catapult.move(-127);
+        catapult.move(127);
         pros::delay(80);
         catapult.move(0);
         
@@ -23,22 +23,8 @@ void setCataMotor()
 
     if (!ready)
     {
-        power = -127;
+        power = 127;
     }
 
-    rapid_fire();
     catapult.move(power);
-}
-void rapid_fire()
-{
-    bool set = false;
-    if (con.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
-    {
-        if (!set)
-        {
-            catapult.move_velocity(-127);
-            pros::delay(45);
-        }
-    }
-    
 }

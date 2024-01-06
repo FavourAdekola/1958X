@@ -3,8 +3,8 @@
 // MOTORS (PORT, GEAR COLOR, CLOCKWISE, Track Movement as counts, rotations, or degrees)
 
 pros::Motor FR_Drive (11, pros::E_MOTOR_GEAR_GREEN, true, pros::E_MOTOR_ENCODER_COUNTS);
-pros::Motor BR_Drive (12, pros::E_MOTOR_GEAR_GREEN, true, pros::E_MOTOR_ENCODER_COUNTS);
-pros::Motor TR_Drive (13, pros::E_MOTOR_GEAR_GREEN, false, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor BR_Drive (14, pros::E_MOTOR_GEAR_GREEN, true, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor TR_Drive (12, pros::E_MOTOR_GEAR_GREEN, false, pros::E_MOTOR_ENCODER_COUNTS);
 
 pros::Motor TL_Drive (7, pros::E_MOTOR_GEAR_GREEN, true, pros::E_MOTOR_ENCODER_COUNTS);
 pros::Motor FL_Drive (8, pros::E_MOTOR_GEAR_GREEN, false, pros::E_MOTOR_ENCODER_COUNTS);
@@ -14,7 +14,7 @@ pros::Motor intake (15, pros::E_MOTOR_GEAR_200, false, pros::E_MOTOR_ENCODER_COU
 pros::ADIMotor pushy_one ('A');
 
 // CATAPULT STUFF
-pros::Motor catapult (18, pros::E_MOTOR_GEAR_RED, false, pros::E_MOTOR_ENCODER_COUNTS);
+pros::Motor catapult (20, pros::E_MOTOR_GEAR_RED, false, pros::E_MOTOR_ENCODER_COUNTS);
 pros::ADIMotor limit_switch('B');
 
 
